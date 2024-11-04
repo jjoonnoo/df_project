@@ -1,0 +1,26 @@
+<body>
+    <button onclick="googleLogin()">구글 소셜 로그인</button>
+    <button onclick="redirectProfile()">프로필</button>
+    <button onclick="gotoregister()">가입추가정보</button>
+    <button onclick="logout()">로그아웃</button>
+</body>
+<script>
+    function googleLogin(){
+        window.location.href = "/api/auth/google"
+    }
+    function redirectProfile(){
+        window.location.href = "/profile"
+    }
+    function gotoregister(){
+        window.location.href = "/register"
+    }
+    function logout(){
+        if(confirm("로그아웃 하시겠습니까?")){
+            window.location.href = "/api/auth/logout"
+        }
+    }
+</script>
+<!-- 소셜로그인 구현
+자동으로 회원가입
+사용자가 기입해야될 정보 주소 이름 우편번호 개인정보 수집에 관한 동의
+admin 로그인 버튼 따로 만들어놔야됨 -> 소셜로그인과 연계 가능? -->

@@ -1,0 +1,28 @@
+{
+  "name": "jn",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.7",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
+}
