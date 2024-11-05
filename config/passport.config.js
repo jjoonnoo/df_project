@@ -1,20 +1,43 @@
 const passport = require('passport');
 require('dotenv').config()
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const {google} = require('googleapis')
 passport.use(new GoogleStrategy({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: process.env.GOOGLE_REDIRECT_URL,
     },
-    (accessToken, refreshToken, profile, done) => {
-      const user = {
-        googleId: profile.id,
-        displayName: profile.displayName,
-        email: profile.emails[0].value,
-        accessToken,
-        refreshToken,
-      };
-      return done(null, user);
+    async(accessToken, refreshToken, profile, done) => {
+      try{
+        const oauth2Client = new google.auth.OAuth2()
+        oauth2Client.setCredentials({access_token:accessToken})
+        const youtube = google.youtube({
+          version:'v3',
+          auth: oauth2Client,
+        })
+        const response = await youtube.channels.list({
+          part:'id',
+          mine:true,
+        })
+        let youtubeId
+        if(response.data.items && response.data.items.length>0){
+          youtubeId = response.data.items[0].id
+        }
+        const user = {
+          googleId: profile.id,
+          youtubeId,
+          displayName: profile.displayName,
+          email: profile.emails[0].value,
+          accessToken,
+          refreshToken,
+        };
+        return done(null, user);
+      }catch(error){
+        return done(error,null)
+      }
+      
+
+
     }
   )
 );

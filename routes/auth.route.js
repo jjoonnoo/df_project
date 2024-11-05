@@ -5,8 +5,8 @@ const AuthController = require('../controllers/auth.controller')
 const authController = new AuthController()
 router.get('/google', (req,res,next)=>{
     const promptOption = req.isAuthenticated() ? 'none' : 'select_account'
-    passport.authenticate('google', { scope: ['profile', 'email'],prompt: promptOption })(req,res,next)});
-router.get('/google/callback',passport.authenticate('google',{failureRedirect:'/'}),authController.googleCallback)
+    passport.authenticate('google', { scope: ['profile', 'email','https://www.googleapis.com/auth/youtube.readonly'],prompt: promptOption })(req,res,next)});
+router.get('/google/callback',passport.authenticate('google',{failureRedirect:'/',scope:['https://www.googleapis.com/auth/youtube.readonly']}),authController.googleCallback)
 router.get('/logout',(req,res)=>{
     req.logout((err)=>{
         if(err){
