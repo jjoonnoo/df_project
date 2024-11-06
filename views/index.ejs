@@ -5,18 +5,18 @@
     <button onclick="logout()">로그아웃</button>
 </body>
 <script>
-    function googleLogin(){
-        window.location.href = "/api/auth/google"
+    function googleLogin() {
+        window.location.href = '/api/auth/google';
     }
-    function redirectProfile(){
-        window.location.href = "/profile"
+    function redirectProfile() {
+        window.location.href = '/profile';
     }
-    function gotoregister(){
-        window.location.href = "/createUser"
+    function gotoregister() {
+        window.location.href = '/createUser';
     }
-    function logout(){
-        if(confirm("로그아웃 하시겠습니까?")){
-            window.location.href = "/api/auth/logout"
+    function logout() {
+        if (confirm('로그아웃 하시겠습니까?')) {
+            window.location.href = '/api/auth/logout';
         }
     }
 </script>
