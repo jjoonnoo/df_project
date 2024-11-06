@@ -6,7 +6,7 @@ router.get('/',(req,res)=>{
 router.get('/profile',(req,res)=>{
     res.render('profile',{title:'프로필'})
 })
-router.get('/register',(req,res)=>{
-    res.render('register',{title:'회원가입'})
+router.get('/createUser',(req,res)=>{
+    res.render('create.user.ejs',{title:'회원가입'})
 })
 module.exports = router

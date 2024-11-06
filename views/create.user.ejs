@@ -1,0 +1,49 @@
+<div class="form-container">
+    <div class="form-group">
+        <span>이름</span>
+        <input type="text" id="name" placeholder="예시) 홍길동">
+        <small>성함을 입력해주세요.</small>
+    </div>
+    <div class="form-group">
+        <label for="phone">전화번호</label>
+        <input type="text" id="phone" maxlength='11' oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="예시) 01012345678">
+        <small>-를 제외한 전화번호를 입력해주세요.</small>
+    </div>
+    <div class="form-group">
+        <input type="button" onclick="daumPostal()" value="우편번호 찾기">
+        <small>우편번호 찾기를 눌러주세요.</small>
+        <input type="text" id="postcode" placeholder="우편번호" readonly>
+    </div>
+    <div class="form-group">
+        <input type="text" id="roadAddress" placeholder="도로명주소"readonly>
+    </div>
+    <div class="form-group">
+        <input type="text" id="jibunAddress" placeholder="지번주소"readonly>
+    </div>
+    <div class="form-group">
+        <label for="detailAddress">상세주소</label>
+        <input type="text" id="detailAddress" placeholder=" 예시) 103동 101호">
+        <small>상세 주소를 입력해주세요.</small>
+    </div>
+    <div class="form-group">
+        <input type="text" id="extraAddress" placeholder="참고항목" style="display:none">
+        <span id="guide" style="color:#999;display:none"></span>
+    </div>
+    <div class="info-container">    
+        <div><strong>수집내용</strong></div>
+        <div>이름, 연락처, 이메일, 주소</div>
+        <div><strong>수집목적</strong></div>
+        <div>배송관련</div>
+        <div><strong>보유ㆍ이용기간</strong></div>
+        <div>수집일로부터 5년까지</div>
+    </div>  
+    <br class="form-group-checkbox">
+        <input type="checkbox" id="usePersonalInfo">
+        <label for="usePersonalInfo">개인정보처리이용에 동의 하시겠습니까?</label>
+        <div><small>개인정보처리이용에 동의 하지 않으면 이용하실 수 없습니다.</small></div></br>
+        <div class="button-container">
+            <button onclick="validateCheck()">회원가입</button>
+        </div>
+    </div>
+</div>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

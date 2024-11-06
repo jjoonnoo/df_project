@@ -1,3 +1,16 @@
+//내 정보보기
+function getMyProfile(){
+    $.ajax({
+        type:'GET',
+        url:'/api/user/findUserByYoutubeId',
+        data:{},
+        success:function(response){
+            
+        },error:function(error){
+            alert(error.message)
+        }
+    })
+}
 //회원 정보 수정
 function modifyUser(){
     $.ajax({
@@ -26,19 +39,6 @@ function deleteUser(){
         })
     }
 }
-//내 정보보기
-function myInfo(){
-    $.ajax({
-        type:'GET',
-        url:'/api/user/findUserByGoogleId',
-        data:{},
-        success:function(response){
-            
-        },error:function(error){
-            alert(error.message)
-        }
-    })
-}
 //내 주문 내역 보기
 function myProductStatus(){
     $.ajax({
@@ -51,41 +51,4 @@ function myProductStatus(){
             alert(error.message)
         }
     })
-}
-//관리자 전체 주문 보기(배송 전 배송 완료)
-function adminOrder(){
-    $.ajax({
-        type:'GET',
-        url:'/api/admin',
-        data:{},
-        success:function(response){
-
-        },error:function(error){
-            alert(error.message)
-        }
-    })
-}
-//관리자 배송 전 배송 완료 정렬
-function adminDelivery(){
-    
-}
-//배송 취소 및 변경
-function deliveryStatusChange(){
-
-}
-//상품 리스트(재고, 이름 등)
-function productList(){
-
-}
-//상품 추가
-function productAdd(){
-
-}
-//상품 삭제
-function productSub(){
-
-}
-//상품 수정
-function productModify(){
-
 }
