@@ -8,22 +8,24 @@ class UserService {
     };
     createUser = async (
         googleId,
+        youtubeId,
+        nickname,
         email,
         name,
         address,
         phone,
         postalCode,
-        role,
         usePersonalInfo
     ) => {
         const userData = await this.userRepository.createUser(
             googleId,
+            youtubeId,
+            nickname,
             email,
             name,
             address,
             phone,
             postalCode,
-            role,
             usePersonalInfo
         );
         return userData;

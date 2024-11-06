@@ -1,29 +1,31 @@
 const { User } = require('../models');
 class UserRepository {
     findUserByYoutubeId = async (youtubeId) => {
-        const data = await User.findOne({
+        const userData = await User.findOne({
             where: { youtubeId: youtubeId },
         });
-        return data;
+        return userData;
     };
     createUser = async (
         googleId,
+        youtubeId,
+        nickname,
         email,
         name,
         address,
         phone,
         postalCode,
-        role,
         usePersonalInfo
     ) => {
         const data = await User.create({
             googleId,
+            youtubeId,
+            nickname,
             email,
             name,
             address,
             phone,
             postalCode,
-            role,
             usePersonalInfo,
         });
         return data;

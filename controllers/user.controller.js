@@ -12,6 +12,7 @@ class UserController {
         const youtubeId = req.session.youtubeId;
         const googleId = req.session.googleId;
         const email = req.session.email;
+        const nickname = req.session.youtubeNickName;
         const usePersonalInfo = moment()
             .tz('Asia/Seoul')
             .add(5, 'years')
@@ -19,6 +20,7 @@ class UserController {
         await this.userService.createUser(
             googleId,
             youtubeId,
+            nickname,
             email,
             name,
             address,
@@ -31,10 +33,12 @@ class UserController {
     modifyUserInfo = async (req, res) => {
         const { address, postalCode, phone, name } = req.body;
         const youtubeId = req.session.youtubeId;
+        const nickname = req.session.youtubeNickName;
         const user = await this.userService.findUserByYoutubeId(youtubeId);
         if (user) {
             await this.userService.modifyUser(
                 youtubeId,
+                nickname,
                 name,
                 address,
                 postalCode,

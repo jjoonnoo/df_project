@@ -7,7 +7,7 @@ function validateCheck() {
     let checkbox = document.getElementById('usePersonalInfo');
     if (name === '') {
         alert('이름을 입력해주세요.');
-    } else if (phone === '' && phone.length < 11) {
+    } else if (phone === '' && phone.length < 10) {
         alert('전화번호를 확인해주세요.');
     } else if (postalCode === '' || address === '') {
         alert('우편번호를 입력해주세요.');
@@ -67,7 +67,6 @@ function createUser() {
     if (confirm('회원가입하시겠습니까?')) {
         let name = $('#name').val();
         let phone = $('#phone');
-        let phoneNumber = phone.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
         let postalCode = $('#postcode');
         let address = $('#roadAddress').val() + ' ' + $('#detailAddress').val();
         $.ajax({
@@ -76,7 +75,7 @@ function createUser() {
             data: {
                 name: name,
                 address: address,
-                phone: phoneNumber,
+                phone: phone,
                 postalCode: postalCode,
             },
             success: function (response) {
