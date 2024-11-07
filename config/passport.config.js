@@ -23,8 +23,6 @@ passport.use(
                 });
                 let youtubeId;
                 let youtubeNickName;
-                console.log(response.data.items);
-                console.log(profile);
                 if (response.data.items && response.data.items.length > 0) {
                     youtubeId = response.data.items[0].id;
                     youtubeNickName = response.data.items[0].snippet.title;

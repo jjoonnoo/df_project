@@ -1,20 +1,22 @@
 function validateCheck() {
     let name = $('#name').val();
-    let phone = $('#phone');
-    let postalCode = $('#postcode');
-    let detailAddress = $('#detailAddress');
+    let phone = $('#phone').val();
+    let postalCode = $('#postcode').val();
+    let detailAddress = $('#detailAddress').val();
     let address = $('#roadAddress').val();
     let checkbox = document.getElementById('usePersonalInfo');
     if (name === '') {
-        alert('이름을 입력해주세요.');
-    } else if (phone === '' && phone.length < 10) {
-        alert('전화번호를 확인해주세요.');
+        alert('이름을 입력해 주세요.');
+    } else if (phone === '') {
+        alert('전화번호를 입력해 주세요.');
     } else if (postalCode === '' || address === '') {
-        alert('우편번호를 입력해주세요.');
+        alert('우편번호 찾기를 완료해 주세요.');
     } else if (detailAddress === '') {
-        alert('상세주소를 입력해주세요.');
+        alert('상세 주소를 입력해주세요.');
     } else if (!checkbox.checked) {
-        alert('개인정보수집이용에 동의해주세요.');
+        alert(
+            '개인정보 수집 이용에 동의해주세요. 동의 하지 않으면 이용하실 수 없습니다.'
+        );
     } else {
         createUser();
     }
@@ -66,9 +68,14 @@ function daumPostal() {
 function createUser() {
     if (confirm('회원가입하시겠습니까?')) {
         let name = $('#name').val();
-        let phone = $('#phone');
-        let postalCode = $('#postcode');
-        let address = $('#roadAddress').val() + ' ' + $('#detailAddress').val();
+        let phone = $('#phone').val();
+        let postalCode = $('#postcode').val();
+        let address =
+            $('#roadAddress').val() +
+            ' ' +
+            $('#detailAddress').val() +
+            ' ' +
+            $('#extraAddress').val();
         $.ajax({
             type: 'POST',
             url: '/api/user/createUser',
@@ -80,7 +87,7 @@ function createUser() {
             },
             success: function (response) {
                 alert(response.message);
-                window.location.href = '/';
+                window.location.href = '/profile';
             },
             error: function (error) {
                 alert(error.message);
@@ -89,4 +96,15 @@ function createUser() {
     } else {
         alert('회원가입이 취소 되었습니다.');
     }
+}
+function fnPopup() {
+    window.open(
+        'https://nice.checkplus.co.kr/CheckPlusSafeModel/service.cb',
+        'popupChk',
+        'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no'
+    );
+    document.form_chk.action =
+        'https://nice.checkplus.co.kr/CheckPlusSafeModel/service.cb';
+    document.form_chk.target = 'popupChk';
+    document.form_chk.submit();
 }

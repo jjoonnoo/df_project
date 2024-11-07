@@ -1,3 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 .form-container {
     background-color: #fff;
     padding: 20px;
@@ -5,6 +14,11 @@
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+}
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
 }
 .form-group {
     margin-bottom: 15px;
@@ -14,37 +28,62 @@
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
+    color: #555;
 }
-.form-group input[type='text'],
-.form-group input[type='button'],
-.form-group input[type='checkbox'] {
+.form-group input[type="text"],
+.form-group input[type="button"],
+.form-group input[type="checkbox"] {
     width: 100%;
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
 }
-.form-group input[type='button'] {
+.form-group input[type="text"][readonly] {
+    background-color: #f2f2f2;
+    color: #666;
+}
+.form-group input[type="button"] {
     background-color: #4caf50;
     color: white;
     font-weight: bold;
     cursor: pointer;
+    width: 100%;
 }
-.form-group input[type='button']:hover {
+.form-group input[type="button"]:hover {
     background-color: #45a049;
 }
-small {
-    color: #666;
-    font-size: 12px;
+.phone-input-group {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.phone-input-group input[type="text"] {
+    flex: 1;
+    padding: 3px;
+    font-size: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #333;
 }
 .form-group-checkbox {
     display: flex;
     align-items: center;
+    gap: 10px;
+    font-size: 14px;
     margin-bottom: 20px;
 }
-.form-group-checkbox label {
-    margin-left: 10px;
-    font-size: 14px;
+.form-group-checkbox input[type="checkbox"] {
+    width: auto;
+}
+small {
+    color: #666;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
 }
 .button-container {
     text-align: center;
@@ -52,11 +91,13 @@ small {
 .button-container button {
     background-color: #4caf50;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    width: 100%;
+    font-weight: bold;
 }
 .button-container button:hover {
     background-color: #45a049;
@@ -65,6 +106,9 @@ small {
     font-size: 12px;
     color: #333;
     margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
 }
 .info-container div {
     margin-bottom: 5px;

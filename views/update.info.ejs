@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/css/update.info.css">
+<div class="update-container" id="openUpdateButton">
+    <div class="update-item">
+        <button onclick="openAddress()">주소 수정</button>
+    </div>
+    <div class="update-item">
+        <button onclick="openNice()">회원 정보 수정</button>
+    </div>
+</div>
+
+<div class="update-container" id="openedAddress" style="display: none;">
+    <h2>주소 수정</h2>
+    <div class="update-item">
+        <input type="text" id="postcode" name="postalCode" placeholder="우편번호" readonly />
+        <button type="button" onclick="daumPostal()">우편번호 찾기</button>
+        <small>우편번호 찾기를 클릭하여 주소를 입력하세요.</small>
+    </div>
+    <div class="update-item">
+        <input type="text" id="roadAddress" name="address" placeholder="도로명 주소" readonly />
+    </div>
+    <div class="update-item">
+        <input type="text" id="jibunAddress" placeholder="지번 주소" readonly />
+    </div>
+    <div class="update-item">
+        <input type="text" id="extraAddress" placeholder="참고 항목" readonly />
+        <div id="guide"></div>
+    </div>
+    <div class="update-item">
+        <label for="detailAddress">상세 주소</label>
+        <input type="text" id="detailAddress" name="detailAddress" placeholder="예시) 103동 101호" />
+        <small>상세 주소를 입력하세요.</small>
+    </div>
+    <div class="update-item">
+        <button onclick="updateAddress()">주소 수정</button>
+    </div>
+    <div class="update-item">
+        <button onclick="updateCancle()">취소</button>
+    </div>
+</div>
+
+<div class="update-container" id="openedNice" style="display: none;">
+    <h2>회원 정보 수정</h2>
+    <div><small>성함 혹은 전화번호가 변경 되었다면 수정해주세요.</small></div>
+    <div class="update-item">
+        <input type="text" id="name" placeholder="이름" />
+    </div>
+    <div class="update-item">
+        <input type="text" id="phone" placeholder="전화번호" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+        <small>-를 제외하고 입력해 주세요.</small>
+    </div>
+    <div class="update-item">
+        <button onclick="updatePhoneNum()">수정하기</button>
+    </div>
+    <div class="update-item">
+        <button onclick="updateCancle()">취소</button>
+    </div>
+</div>
+<script>
+    function openAddress(){
+        $('#openedAddress').show()
+        $('#openUpdateButton').hide()
+    }
+    function openNice(){
+        $('#openedNice').show()
+        $('#openUpdateButton').hide()
+    }
+    function updateCancle(){
+        if(confirm("취소하시겠습니까?")){
+            location.reload()
+        }
+    }
+</script>

@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+.update-container {
+    width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.update-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+.update-item {
+    margin-bottom: 15px;
+    text-align: center;
+}
+.update-item label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+.update-item input[type="text"],
+.update-item input[type="button"],
+.update-item button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+.update-item input[type="text"] {
+    background-color: #f9f9f9;
+    color: #333;
+}
+.update-item input[type="button"],
+.update-item button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+.update-item input[type="button"]:hover,
+.update-item button:hover {
+    background-color: #45a049;
+}
+.update-item small {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+}
+#guide {
+    color: #888;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+#openUpdateButton button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+#openUpdateButton button:hover {
+    background-color: #0069d9;
+}

@@ -30,19 +30,15 @@ class UserController {
         );
         res.json({ message: '회원가입에 성공하였습니다.' });
     };
-    modifyUserInfo = async (req, res) => {
-        const { address, postalCode, phone, name } = req.body;
+    updateAddress = async (req, res) => {
+        const { postalCode, address } = req.body;
         const youtubeId = req.session.youtubeId;
-        const nickname = req.session.youtubeNickName;
         const user = await this.userService.findUserByYoutubeId(youtubeId);
         if (user) {
-            await this.userService.modifyUser(
+            await this.userService.updateAddress(
                 youtubeId,
-                nickname,
-                name,
                 address,
-                postalCode,
-                phone
+                postalCode
             );
         }
         res.json({ message: '회원정보 수정에 성공하였습니다.' });

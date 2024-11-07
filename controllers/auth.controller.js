@@ -15,6 +15,12 @@ class AuthController {
             res.redirect('/createUser');
         } else if (user.role == 1) {
             res.redirect('/admin');
+        } else if (
+            user.googleId == null ||
+            user.email == null ||
+            user.nickname == null
+        ) {
+            await this.userService.changedUserInfoUpdate(youtubeId);
         } else {
             req.session.user = user;
             res.redirect('/profile');
