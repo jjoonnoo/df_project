@@ -91,7 +91,7 @@ function createUser() {
                 window.location.href = '/profile';
             },
             error: function (error) {
-                alert(error.message);
+                alert(error.responseJSON.message);
             },
         });
     } else {

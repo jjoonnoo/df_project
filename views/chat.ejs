@@ -1,0 +1,31 @@
+<style>
+    body { font-family: Arial, sans-serif; }
+    #chat-container { max-width: 600px; margin: auto; padding: 10px; }
+    .chat-message { border-bottom: 1px solid #ccc; padding: 5px; }
+    .author { font-weight: bold; }
+    .timestamp { font-size: 0.8em; color: #888; }
+    .profile-picture { width: 30px; height: 30px; border-radius: 50%; }
+</style>
+<div id="chat-container"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    // 서버로부터 채팅 메시지 수신
+    socket.on('chat-message', (data) => {
+        const chatContainer = document.getElementById('chat-container');
+
+        const chatElement = document.createElement('div');
+        chatElement.classList.add('chat-message');
+
+        chatElement.innerHTML = `
+            <img src="${data.profilePicture}" class="profile-picture" alt="Profile Picture">
+            <span class="author">${data.author}</span>
+            <span class="timestamp">${data.timestamp}</span>
+            <p>${data.message}</p>
+        `;
+
+        chatContainer.appendChild(chatElement);
+        chatContainer.scrollTop = chatContainer.scrollHeight; // 새로운 메시지로 스크롤 이동
+    });
+</script>

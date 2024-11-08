@@ -12,9 +12,7 @@ class AuthController {
             req.session.email = email;
             req.session.nickname = nickname;
             const user = await this.userService.findUserByYoutubeId(youtubeId);
-            if (!user) {
-                res.redirect('/createUser');
-            } else if (user.role == 1) {
+            if (user.role == 1) {
                 res.redirect('/admin');
             } else if (!user.googleId || !user.email || !user.nickname) {
                 await this.userService.changedUserInfoUpdate(

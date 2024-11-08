@@ -66,12 +66,16 @@ class UserController {
                     .status(404)
                     .json({ message: '사용자를 찾을 수 없습니다.' });
             }
-            await this.userService.updateAddress(
-                youtubeId,
-                address,
-                postalCode
-            );
-            res.json({ message: '주소 수정에 성공하였습니다.' });
+            if (user.postalCode != postalCode || user.address != address) {
+                await this.userService.updateAddress(
+                    youtubeId,
+                    address,
+                    postalCode
+                );
+                return res.json({ message: '주소 수정에 성공하였습니다.' });
+            } else {
+                return res.status(200).json({ message: '변경점이 없습니다.' });
+            }
         } catch (error) {
             res.status(500).json({
                 message: '주소 수정 중 에러가 발생했습니다.',
@@ -88,8 +92,12 @@ class UserController {
                     .status(400)
                     .json({ message: '사용자를 찾을 수 없습니다.' });
             }
-            await this.userService.updateInfo(youtubeId, name, phone);
-            res.json({ message: '회원정보 수정에 성공하였습니다.' });
+            if (user.name != name || user.phone != phone) {
+                await this.userService.updateInfo(youtubeId, name, phone);
+                return res.json({ message: '회원정보 수정에 성공하였습니다.' });
+            } else {
+                return res.status(200).json({ message: '변경점이 없습니다.' });
+            }
         } catch (error) {
             res.status(500).json({
                 message: '회원정보 수정 중 에러가 발생했습니다.',

@@ -12,4 +12,7 @@ router.get('/createUser', (req, res) => {
 router.get('/updateInfo', (req, res) => {
     res.render('update.info.ejs', { title: '주소 수정' });
 });
+router.get('/chatPage', (req, res) => {
+    res.render('chat.ejs', { title: '채팅' });
+});
 module.exports = router;

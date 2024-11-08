@@ -40,7 +40,7 @@ function getMyInfo() {
             $('#profile-container').append(temp);
         },
         error: function (error) {
-            alert(error.message);
+            alert(error.responseJSON.message);
         },
     });
 }
@@ -53,18 +53,20 @@ function updateAddress() {
         $('#extraAddress').val() +
         ' ' +
         $('#detailAddress').val();
-    if (postalCode === null || address === null || detailAddress === null) {
+    if (!postalCode || !address || !detailAddress) {
         alert('주소를 입력해 주세요.');
     } else {
         $.ajax({
-            type: 'PUT',
+            type: 'PATCH',
             url: '/api/user/updateAddress',
             data: { postalCode: postalCode, address: address },
             success: function (response) {
                 alert(response.message);
+                window.location.href = '/profile';
             },
             error: function (error) {
-                alert(error.message);
+                alert(error.responseJSON.message);
+                window.location.href = '/';
             },
         });
     }
@@ -79,14 +81,16 @@ function updateInfo() {
         alert('이름과 전화번호를 입력해 주세요.');
     } else {
         $.ajax({
-            type: 'PUT',
+            type: 'PATCH',
             url: '/api/user/updateInfo',
             data: { name: name, phone: phone },
             success: function (response) {
                 alert(response.message);
+                window.location.href = '/profile';
             },
             error: function (error) {
-                alert(error.message);
+                alert(error.responseJSON.message);
+                window.location.href = '/';
             },
         });
     }
@@ -103,7 +107,8 @@ function deleteUser() {
                 window.location.href = '/';
             },
             error: function (error) {
-                alert(error.message);
+                alert(error.responseJSON.message);
+                window.location.href = '/';
             },
         });
     }

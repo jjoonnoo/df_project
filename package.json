@@ -26,7 +26,9 @@
     "passport-google-oauth20": "^2.0.0",
     "path": "^0.12.7",
     "prettier": "^3.3.3",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "socket.io": "^4.8.1",
+    "youtube-chat": "^2.2.0"
   },
   "devDependencies": {
     "sequelize-cli": "^6.6.2"
