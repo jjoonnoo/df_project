@@ -68,14 +68,15 @@ function daumPostal() {
 function createUser() {
     if (confirm('회원가입하시겠습니까?')) {
         let name = $('#name').val();
-        let phone = $('#phone').val();
+        let phone =
+            $('#phone1').val() + $('#phone2').val() + $('#phone3').val();
         let postalCode = $('#postcode').val();
         let address =
             $('#roadAddress').val() +
             ' ' +
-            $('#detailAddress').val() +
+            $('#extraAddress').val() +
             ' ' +
-            $('#extraAddress').val();
+            $('#detailAddress').val();
         $.ajax({
             type: 'POST',
             url: '/api/user/createUser',

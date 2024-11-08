@@ -12,11 +12,11 @@ class UserController {
         const youtubeId = req.session.youtubeId;
         const googleId = req.session.googleId;
         const email = req.session.email;
-        const nickname = req.session.youtubeNickName;
+        const nickname = req.session.nickname;
         const usePersonalInfo = moment()
             .tz('Asia/Seoul')
-            .add(5, 'years')
-            .format('YYY-MM-DD HH:mm:ss');
+            .add(4, 'years')
+            .format('YYYY-MM-DD HH:mm:ss');
         await this.userService.createUser(
             googleId,
             youtubeId,
@@ -43,15 +43,23 @@ class UserController {
         }
         res.json({ message: '회원정보 수정에 성공하였습니다.' });
     };
+    updateInfo = async (req, res) => {
+        const { name, phone } = req.body;
+        const youtubeId = req.session.youtubeid;
+        const user = await this.userService.findUserByYoutubeId(youtubeId);
+        if (user) {
+            await this.userService.updateInfo(youtubeId, name, phone);
+        }
+        res.json({ message: '회원정보 수정에 성공하였습니다.' });
+    };
     deleteUser = async (req, res) => {
         const youtubeId = req.session.youtubeId;
         const user = await this.userService.findUserByYoutubeId(youtubeId);
-        if (user) {
+        if (user.youtubeId == youtubeId) {
             await this.userService.deleteUser(youtubeId);
         }
         req.session.destroy();
         res.json({ message: '회원탈퇴에 성공하였습니다.' });
-        res.render('index', { title: 'Home' });
     };
 }
 module.exports = UserController;

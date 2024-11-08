@@ -30,11 +30,18 @@ class UserService {
         );
         return userData;
     };
-    modifyUser = async (googleId, address, postalCode, phone) => {
-        const userData = await this.userRepository.modifyUser(
-            googleId,
+    updateAddress = async (youtubeId, address, postalCode) => {
+        const userData = await this.userRepository.updateAddress(
+            youtubeId,
             address,
-            postalCode,
+            postalCode
+        );
+        return userData;
+    };
+    updateInfo = async (youtubeId, name, phone) => {
+        const userData = await this.userRepository.updateInfo(
+            youtubeId,
+            name,
             phone
         );
         return userData;

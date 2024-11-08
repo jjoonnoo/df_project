@@ -1,36 +1,14 @@
-<!-- <script>
+<script>
     $(document).ready(function () {
         getMyInfo()
     });
-</script> -->
+</script>
 <link rel="stylesheet" href="/css/profile.css">
 <div class="profile-container" id="profile-container">
-    <h2>프로필</h2>
-    <div class="profile-item">
-        <label>이메일:</label>
-        <span>info.email</span>
-    </div>
-    <div class="profile-item">
-        <label>전화번호:</label>
-        <span>info.phone</span>
-    </div>
-    <div class="profile-item">
-        <label>이름:</label>
-        <span>info.name</span>
-    </div>
-    <div class="profile-item">
-        <label>유튜브닉네임:</label>
-        <span>info.nickname</span>
-    </div>
-    <div class="profile-item">
-        <label>주소:</label>
-        <span>info.address</span>
-    </div>
-    <div class="profile-item">
-        <label>우편번호:</label>
-        <span>info.postalCode</span>
-    </div>
+
 </div>
-<button onclick="deleteUser()">회원 탈퇴</button>
-<button onclick="redirectModifyPage()">회원 정보 수정</button>
-<button onclick="">주문 내역 확인</button>
+<div class="button-container">
+    <button onclick="redirectModifyPage()">회원 정보 수정</button>
+    <!-- <button onclick="">주문 내역 확인</button> -->
+    <button onclick="deleteUser()">회원 탈퇴</button>
+</div>

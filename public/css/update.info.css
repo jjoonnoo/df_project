@@ -74,3 +74,26 @@ body {
 #openUpdateButton button:hover {
     background-color: #0069d9;
 }
+.phone-input-group {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.phone-input-group input[type="text"] {
+    flex: 1;
+    width: 5px;
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+}
+.phone-input-group label,
+.phone-input-group span {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}

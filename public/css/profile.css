@@ -12,6 +12,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: #f9f9f9;
+    margin-bottom: 20px;
 }
 .profile-container h2 {
     text-align: center;
@@ -23,9 +24,32 @@ body {
 }
 .profile-item label {
     font-weight: bold;
+    color: #333;
 }
 .profile-item span {
     display: block;
     margin-top: 5px;
     color: #555;
+}
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 300px; /* profile-container의 너비와 맞춤 */
+}
+.button-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    flex: 1;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    text-align: center;
+}
+.button-container button:hover {
+    background-color: #45a049;
 }

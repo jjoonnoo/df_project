@@ -6,6 +6,9 @@
     <div class="update-item">
         <button onclick="openNice()">회원 정보 수정</button>
     </div>
+    <div class="update-item">
+        <button onclick="updateCancle()">취소</button>
+    </div>
 </div>
 
 <div class="update-container" id="openedAddress" style="display: none;">
@@ -34,7 +37,7 @@
         <button onclick="updateAddress()">주소 수정</button>
     </div>
     <div class="update-item">
-        <button onclick="updateCancle()">취소</button>
+        <button onclick="updateAddressCancle()">취소</button>
     </div>
 </div>
 
@@ -44,15 +47,20 @@
     <div class="update-item">
         <input type="text" id="name" placeholder="이름" />
     </div>
-    <div class="update-item">
-        <input type="text" id="phone" placeholder="전화번호" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-        <small>-를 제외하고 입력해 주세요.</small>
+    <div class="form-group">
+        <label for="phone">전화번호</label>
+        <div class="phone-input-group">
+            <input type="text" id="phone1" maxlength="3" oninput="validateNumberInput(this, 'phone2')" placeholder="010">
+            <input type="text" id="phone2" maxlength="4" oninput="validateNumberInput(this, 'phone3')" placeholder="1234">
+            <input type="text" id="phone3" maxlength="4" oninput="validateNumberInput(this, null)" placeholder="5678">
+        </div>
+        <small>숫자만 입력하세요.</small>
     </div>
     <div class="update-item">
         <button onclick="updatePhoneNum()">수정하기</button>
     </div>
     <div class="update-item">
-        <button onclick="updateCancle()">취소</button>
+        <button onclick="updateInfoCancle()">취소</button>
     </div>
 </div>
 <script>
@@ -64,9 +72,19 @@
         $('#openedNice').show()
         $('#openUpdateButton').hide()
     }
-    function updateCancle(){
+    function updateAddressCancle(){
         if(confirm("취소하시겠습니까?")){
             location.reload()
+        }
+    }
+    function updateInfoCancle(){
+        if(confirm("취소하시겠습니까?")){
+            location.reload()
+        }
+    }
+    function updateCancle(){
+        if(confirm("취소하시겠습니까?")){
+            window.location.href='/profile'
         }
     }
 </script>

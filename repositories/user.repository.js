@@ -30,10 +30,17 @@ class UserRepository {
         });
         return data;
     };
-    modifyUser = async (googleId, address, postalCode, phone) => {
+    updateAddress = async (youtubeId, address, postalCode) => {
         const data = await User.update(
-            { address: address, postalCode: postalCode, phone: phone },
-            { where: { googleId: googleId } }
+            { address: address, postalCode: postalCode },
+            { where: { youtubeId: youtubeId } }
+        );
+        return data;
+    };
+    updateInfo = async (youtubeId, name, phone) => {
+        const data = await User.update(
+            { name: name, phone: phone },
+            { where: { youtubeId: youtubeId } }
         );
         return data;
     };
