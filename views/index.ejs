@@ -1,22 +1,14 @@
 <link rel="stylesheet" href="/css/index.css" />
 <div class="login-container">
-    <h2>로그인</h2>
     <button onclick="googleLogin()" class="google-login-btn">
         <img src="/img/web_neutral_sq_na.svg" alt="Google logo">
         Google로 로그인
     </button>
 </div>
 <script>
-    function googleLogin() {
-        window.location.href = '/api/auth/google';
-    }
     function logout() {
         if (confirm('로그아웃 하시겠습니까?')) {
             window.location.href = '/api/auth/logout';
         }
     }
 </script>
-<!-- 소셜로그인 구현
-자동으로 회원가입
-사용자가 기입해야될 정보 주소 이름 우편번호 개인정보 수집에 관한 동의
-admin 로그인 버튼 따로 만들어놔야됨 -> 소셜로그인과 연계 가능? -->

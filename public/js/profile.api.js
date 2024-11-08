@@ -46,23 +46,50 @@ function getMyInfo() {
 }
 function updateAddress() {
     let postalCode = $('#postcode').val();
+    let detailAddress = $('#detailAddress').val();
     let address =
         $('#roadAddress').val() +
         ' ' +
         $('#extraAddress').val() +
         ' ' +
         $('#detailAddress').val();
-    $.ajax({
-        type: 'PUT',
-        url: '/api/user/updateAddress',
-        data: { postalCode: postalCode, address: address },
-        success: function (response) {
-            alert(response.message);
-        },
-        error: function (error) {
-            alert(error.message);
-        },
-    });
+    if (postalCode === null || address === null || detailAddress === null) {
+        alert('주소를 입력해 주세요.');
+    } else {
+        $.ajax({
+            type: 'PUT',
+            url: '/api/user/updateAddress',
+            data: { postalCode: postalCode, address: address },
+            success: function (response) {
+                alert(response.message);
+            },
+            error: function (error) {
+                alert(error.message);
+            },
+        });
+    }
+}
+function updateInfo() {
+    const name = $('#name').val();
+    const phone1 = $('#phone1').val();
+    const phone2 = $('#phone2').val();
+    const phone3 = $('#phone3').val();
+    const phone = phone1 + phone2 + phone3;
+    if (name === '' || phone1 === '' || phone2 === '' || phone3 === '') {
+        alert('이름과 전화번호를 입력해 주세요.');
+    } else {
+        $.ajax({
+            type: 'PUT',
+            url: '/api/user/updateInfo',
+            data: { name: name, phone: phone },
+            success: function (response) {
+                alert(response.message);
+            },
+            error: function (error) {
+                alert(error.message);
+            },
+        });
+    }
 }
 //회원 탈퇴
 function deleteUser() {

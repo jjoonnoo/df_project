@@ -1,3 +1,6 @@
+function googleLogin() {
+    window.location.href = '/api/auth/google';
+}
 //회원 정보 수정
 function modifyUser() {
     $.ajax({

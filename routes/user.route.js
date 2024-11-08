@@ -5,5 +5,6 @@ const userController = new UserController();
 router.get('/findUserByYoutubeId', userController.findUserByYoutubeId);
 router.post('/createUser', userController.createUser);
 router.patch('/updateAddress', userController.updateAddress);
+router.patch('/updateInfo', userController.updateInfo);
 router.delete('/deleteUser', userController.deleteUser);
 module.exports = router;
