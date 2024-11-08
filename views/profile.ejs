@@ -1,6 +1,14 @@
-<body>
-    <div>내 정보</div>
-    <button onclick="deleteUser()">회원 탈퇴</button>
+<script>
+    $(document).ready(function () {
+        getMyInfo()
+    });
+</script>
+<link rel="stylesheet" href="/css/profile.css">
+<div class="profile-container" id="profile-container">
+
+</div>
+<div class="button-container">
     <button onclick="redirectModifyPage()">회원 정보 수정</button>
-    <button onclick="">주문 내역 확인</button>
-</body>
+    <!-- <button onclick="">주문 내역 확인</button> -->
+    <button onclick="deleteUser()">회원 탈퇴</button>
+</div>

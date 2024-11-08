@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/css/create.user.css">
+<div class="form-container">
+    <h2>회원 가입</h2>
+    <div class="form-group">
+        <label for="name">이름</label>
+        <input type="text" id="name" placeholder="이름">
+    </div>
+    <div class="form-group">
+        <label for="phone">전화번호</label>
+        <div class="phone-input-group">
+            <input type="text" id="phone1" maxlength="3" oninput="validateNumberInput(this, 'phone2')" placeholder="010">
+            <input type="text" id="phone2" maxlength="4" oninput="validateNumberInput(this, 'phone3')" placeholder="1234">
+            <input type="text" id="phone3" maxlength="4" oninput="validateNumberInput(this, null)" placeholder="5678">
+        </div>
+        <small>숫자만 입력하세요.</small>
+    </div>
+    <div class="form-group">
+        <input type="text" id="postcode" placeholder="우편번호" readonly>
+        <input type="button" onclick="daumPostal()" value="우편번호 찾기">
+        <small>우편번호 찾기를 클릭하여 주소를 입력하세요.</small>
+    </div>
+    <div class="form-group">
+        <input type="text" id="roadAddress" placeholder="도로명 주소" readonly>
+    </div>
+    <div class="form-group">
+        <input type="text" id="jibunAddress" placeholder="지번 주소" readonly>
+    </div>
+    <div class="form-group">
+        <input type="text" id="extraAddress" placeholder="참고 항목" readonly>
+        <span id="guide" style="color: #999; display: none"></span>
+    </div>
+    <div class="form-group">
+        <label for="detailAddress">상세주소</label>
+        <input type="text" id="detailAddress" placeholder=" 예시) 103동 101호"/>
+        <small>상세 주소를 입력하세요.</small>
+    </div>
+    <div class="info-container">
+        <div><strong>수집내용</strong></div>
+        <div>이름, 연락처, 이메일, 주소</div>
+        <div><strong>수집목적</strong></div>
+        <div>배송관련</div>
+        <div><strong>보유ㆍ이용기간</strong></div>
+        <div>수집일로부터 4년까지</div>
+        <div><strong>개인정보처리이용에 동의 하지 않으면 이용하실 수 없습니다.</strong></div>
+    </div>
+    <div class="form-group-checkbox">
+        <input type="checkbox" id="usePersonalInfo" />
+        <label for="usePersonalInfo">개인정보처리이용에 동의 하시겠습니까?</label>
+    </div>
+    <div class="button-container">
+        <button onclick="validateCheck()">회원가입</button>
+    </div>
+</div>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function validateNumberInput(current, nextFieldID) {
+        // 숫자 이외의 문자는 제거
+        current.value = current.value.replace(/[^0-9]/g, '');
+
+        // 최대 길이에 도달하면 다음 필드로 자동 이동
+        if (nextFieldID && current.value.length === current.maxLength) {
+            document.getElementById(nextFieldID).focus();
+        }
+    }
+</script>

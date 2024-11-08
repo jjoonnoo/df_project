@@ -1,22 +1,18 @@
-<body>
-    <button onclick="googleLogin()">구글 소셜 로그인</button>
-    <button onclick="redirectProfile()">프로필</button>
-    <button onclick="gotoregister()">가입추가정보</button>
-    <button onclick="logout()">로그아웃</button>
-</body>
+<link rel="stylesheet" href="/css/index.css" />
+<div class="login-container">
+    <h2>로그인</h2>
+    <button onclick="googleLogin()" class="google-login-btn">
+        <img src="/img/web_neutral_sq_na.svg" alt="Google logo">
+        Google로 로그인
+    </button>
+</div>
 <script>
-    function googleLogin(){
-        window.location.href = "/api/auth/google"
+    function googleLogin() {
+        window.location.href = '/api/auth/google';
     }
-    function redirectProfile(){
-        window.location.href = "/profile"
-    }
-    function gotoregister(){
-        window.location.href = "/register"
-    }
-    function logout(){
-        if(confirm("로그아웃 하시겠습니까?")){
-            window.location.href = "/api/auth/logout"
+    function logout() {
+        if (confirm('로그아웃 하시겠습니까?')) {
+            window.location.href = '/api/auth/logout';
         }
     }
 </script>
